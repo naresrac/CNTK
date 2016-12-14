@@ -162,7 +162,7 @@ static void UpdateBestEpochs(
 
 // For each criterion copies the best epoch to the new file with criterion name appended.
 template <class ElemType>
-static void CopyBestEpochs(
+/*static*/ void CopyBestEpochs(
     const map<wstring, BestEpoch>& criteriaBestEpoch, const SGD<ElemType>& sgd, const int lastEpoch)
 {
     const wstring& modelBaseName = sgd.GetModelNameForEpoch(lastEpoch);
@@ -882,7 +882,7 @@ void SGD<ElemType>::TrainOrAdaptModel(int startEpoch, ComputationNetworkPtr net,
     if ((m_mpi == nullptr) || m_mpi->IsMainNode())
     {
         // For each criterion copies the best epoch to the new file with criterion name appended.
-        CopyBestEpochs(criteriaBestEpoch, *this, m_maxEpochs - 1);
+        //CopyBestEpochs(criteriaBestEpoch, *this, m_maxEpochs - 1);
     }
 
     // Synchronize all ranks before proceeding to ensure that
