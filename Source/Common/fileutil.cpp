@@ -692,7 +692,7 @@ void copyOrDie(const string& from, const string& to)
 void copyOrDie(const wstring& from, const wstring& to)
 {
     const wstring tempTo = to + L".tmp";
-#ifndef _WIN32
+#ifdef _WIN32
     const BOOL succeeded = CopyFile(from.c_str(), tempTo.c_str(), FALSE);
     if (!succeeded)
         RuntimeError("error copying file '%ls' to '%ls': %d", from.c_str(), tempTo.c_str(), GetLastError());
