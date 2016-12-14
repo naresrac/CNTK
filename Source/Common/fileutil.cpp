@@ -692,25 +692,25 @@ void copyOrDie(const string& from, const string& to)
 void copyOrDie(const wstring& from, const wstring& to)
 {
     const wstring tempTo = to + L".tmp";
-#ifdef _WIN32
+#ifndef _WIN32
     const BOOL succeeded = CopyFile(from.c_str(), tempTo.c_str(), FALSE);
     if (!succeeded)
         RuntimeError("error copying file '%ls' to '%ls': %d", from.c_str(), tempTo.c_str(), GetLastError());
 #else
-    char buffer[READ_SIZE_LIMIT];
+    //char buffer[READ_SIZE_LIMIT];
     FILE* fromFile = fopenOrDie(from, L"rb");
-    const size_t fromFileSize = filesize(fromFile);
-    FILE* tempToFile = fopenOrDie(tempTo, L"wb");
-    for (size_t i = 0; i < fromFileSize; i += READ_SIZE_LIMIT)
-    {
-        const size_t readSize = min<size_t>(fromFileSize - i, READ_SIZE_LIMIT);
-        freadOrDie(buffer, 1, readSize, fromFile);
-        fwriteOrDie(buffer, 1, readSize, tempToFile);
-    }
+    //const size_t fromFileSize = filesize(fromFile);
+    //FILE* tempToFile = fopenOrDie(tempTo, L"wb");
+    //for (size_t i = 0; i < fromFileSize; i += READ_SIZE_LIMIT)
+    //{
+    //    const size_t readSize = min<size_t>(fromFileSize - i, READ_SIZE_LIMIT);
+    //    freadOrDie(buffer, 1, readSize, fromFile);
+    //    fwriteOrDie(buffer, 1, readSize, tempToFile);
+    //}
     fcloseOrDie(fromFile);
-    fcloseOrDie(tempToFile);
+    //fcloseOrDie(tempToFile);
 #endif
-    renameOrDie(tempTo, to);
+    //renameOrDie(tempTo, to);
 }
 
 // ----------------------------------------------------------------------------
