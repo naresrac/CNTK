@@ -44,9 +44,6 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>PerformanceProfilerDll.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OutDir)</AdditionalLibraryDirectories>
-      <DelayLoadDLLs>PerformanceProfilerDll.dll</DelayLoadDLLs>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup>
@@ -58,18 +55,6 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
     </ClCompile>
-    <Lib>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">PerformanceProfilerDll.lib</AdditionalDependencies>
-    </Lib>
-    <Lib>
-      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)</AdditionalLibraryDirectories>
-    </Lib>
-    <Lib>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug_CpuOnly|x64'">PerformanceProfilerDll.lib</AdditionalDependencies>
-    </Lib>
-    <Lib>
-      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug_CpuOnly|x64'">$(OutDir)</AdditionalLibraryDirectories>
-    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="$(ReleaseBuild)">
     <ClCompile>
@@ -82,18 +67,6 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
-    <Lib>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|x64'">PerformanceProfilerDll.lib</AdditionalDependencies>
-    </Lib>
-    <Lib>
-      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)</AdditionalLibraryDirectories>
-    </Lib>
-    <Lib>
-      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release_CpuOnly|x64'">PerformanceProfilerDll.lib</AdditionalDependencies>
-    </Lib>
-    <Lib>
-      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release_CpuOnly|x64'">$(OutDir)</AdditionalLibraryDirectories>
-    </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ConfigUtil.h" />
