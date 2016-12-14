@@ -171,7 +171,7 @@ template <class ElemType>
     {
         const wstring modelCriterionName = modelBaseName + L"_" + bestEpoch.first;
         const wstring modelEpochName = sgd.GetModelNameForEpoch(bestEpoch.second.epochIndex);
-        copyOrDie(modelEpochName, modelCriterionName);
+        //copyOrDie(modelEpochName, modelCriterionName);
         LOGPRINTF(
             stderr,
             "Best epoch for criterion '%ls' is %d and model %ls copied to %ls\n",
